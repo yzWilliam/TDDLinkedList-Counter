@@ -15,7 +15,7 @@ protocol LinkedListProtocol {
     func startNodeOfCycle() -> Node?
     func reverse()
     func removeDuplicate()
-    func thirdNodeFromTheEnd()
+    func thirdNodeFromTheEnd() -> Node?
 }
 
 class LinkedList: LinkedListProtocol {
@@ -96,8 +96,13 @@ class LinkedList: LinkedListProtocol {
         
     }
     
-    func thirdNodeFromTheEnd() {
-        
+    func thirdNodeFromTheEnd() -> Node? {
+        var slow = head, fast = head?.next?.next
+        while fast != nil && fast?.next != nil {
+            fast = fast?.next
+            slow = slow?.next
+        }
+        return slow
     }
     
 }

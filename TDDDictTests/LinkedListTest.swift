@@ -84,6 +84,11 @@ class LinkedListTest: XCTestCase {
         XCTAssertNil(list?.startNodeOfCycle())
     }
     
+    func testThirdNodeFromEnd() throws {
+        setUpWithNoCycle()
+        XCTAssertEqual(list?.thirdNodeFromTheEnd()?.value, 3)
+    }
+    
 //    func testPerformanceExample() throws {
 //        // This is an example of a performance test case.
 //        self.measure {
