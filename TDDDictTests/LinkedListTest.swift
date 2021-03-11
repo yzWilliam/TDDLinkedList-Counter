@@ -33,6 +33,14 @@ class LinkedListTest: XCTestCase {
         setUpWithNoCycle()
         list?.head?.next?.next?.next?.next?.next = list?.head?.next?.next
     }
+    
+    func setUpWithDuplicate() {
+        list?.head = Node(value: 3)
+        list?.head?.next = Node(value: 1)
+        list?.head?.next?.next = Node(value: 1)
+        list?.head?.next?.next?.next = Node(value: 2)
+        list?.head?.next?.next?.next?.next = Node(value: 3)
+    }
 
     func testInit() throws {
         XCTAssertNotNil(list)
@@ -87,6 +95,26 @@ class LinkedListTest: XCTestCase {
     func testThirdNodeFromEnd() throws {
         setUpWithNoCycle()
         XCTAssertEqual(list?.thirdNodeFromTheEnd()?.value, 3)
+    }
+    
+    func testReverse() throws {
+        setUpWithNoCycle()
+        list?.reverse()
+        XCTAssertEqual(list?.head?.value, 5)
+        XCTAssertEqual(list?.head?.next?.value, 4)
+        XCTAssertEqual(list?.head?.next?.next?.value, 3)
+        XCTAssertEqual(list?.head?.next?.next?.next?.value, 2)
+        XCTAssertEqual(list?.head?.next?.next?.next?.next?.value, 1)
+        XCTAssertNil(list?.head?.next?.next?.next?.next?.next)
+    }
+    
+    func testRemoveDuplocate() throws {
+        setUpWithDuplicate()
+        list?.removeDuplicate()
+        XCTAssertEqual(list?.head?.value, 3)
+        XCTAssertEqual(list?.head?.next?.value, 1)
+        XCTAssertEqual(list?.head?.next?.next?.value, 2)
+        XCTAssertNil(list?.head?.next?.next?.next)
     }
     
 //    func testPerformanceExample() throws {
