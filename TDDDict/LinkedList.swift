@@ -33,7 +33,7 @@ class LinkedList: LinkedListProtocol {
     
     func middleElement() -> Node? {
         var fast = head, slow = head
-        while fast != nil && fast?.next != nil {
+        while fast?.next != nil {
             slow = slow?.next
             fast = fast?.next?.next
         }
@@ -42,7 +42,7 @@ class LinkedList: LinkedListProtocol {
     
     func ifContainsCycle() -> Bool {
         var fast = head, slow = head
-        while (fast != nil && fast?.next != nil) {
+        while fast?.next != nil {
             fast = fast?.next?.next
             slow = slow?.next
             if (fast === slow) {
@@ -54,7 +54,7 @@ class LinkedList: LinkedListProtocol {
     
     func findCycleLength() -> Int {
         var fast = head, slow = head
-        while (fast != nil && fast?.next != nil) {
+        while fast?.next != nil {
             fast = fast?.next?.next
             slow = slow?.next
             if (fast === slow) {
@@ -98,7 +98,7 @@ class LinkedList: LinkedListProtocol {
     
     func thirdNodeFromTheEnd() -> Node? {
         var slow = head, fast = head?.next?.next
-        while fast != nil && fast?.next != nil {
+        while fast?.next != nil {
             fast = fast?.next
             slow = slow?.next
         }
